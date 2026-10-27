@@ -3,6 +3,10 @@
 -dontwarn
 -keepattributes *Annotation*
 -keepattributes Signature,InnerClasses,EnclosingMethod
+-keep class org.scijava.** { *; }
+-keep class org.scijava.cache.** { *; }
+-keep class org.scijava.console.** { *; }
+-keep class org.scijava.event.** { *; }
 -keep class io.github.mianalysis.mia.** { *; }
 -keep class io.github.mianalysis.miaserver.** { *; }
 -keep @org.scijava.plugin.Plugin class * { *; }
@@ -457,6 +461,8 @@
 -keepnames class io.github.mianalysis.mia.object.parameters.SeparatorP { *; }
 -keep class org.apache.commons.io.FilenameUtils
 -keepnames class org.apache.commons.io.FilenameUtils { *; }
+-keep class org.apache.commons.text.similarity.LevenshteinDistance { *; }
+-keepnames class org.apache.commons.text.similarity.LevenshteinDistance { *; }
 -keep class io.github.mianalysis.mia.object.refs.collections.PartnerRefs
 -keepnames class io.github.mianalysis.mia.object.refs.collections.PartnerRefs { *; }
 -keep class io.github.mianalysis.mia.object.refs.collections.ParentChildRefs

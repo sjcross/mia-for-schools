@@ -6,32 +6,33 @@ interface Props {
 }
 
 export default function TextEntry(props: Props) {
+  var prevValue = "";
+
+  function send(value: string) {
+    if (value !== prevValue)
+      sendParameter(
+        props.parameter.moduleid,
+        props.parameter.name,
+        value,
+        props.parameter.parentGroupName,
+        props.parameter.groupCollectionNumber,
+        props.updatePage
+      );
+    prevValue = value;
+  }
+
   return (
     <input
-      class="h-10 m-1 text-2xl w-auto rounded-full bg-rose-500 text-white hover:shadow-md transition duration-150 ease-in-out hover:scale-110"
+      class="h-10 m-1 text-2xl w-auto rounded-xl bg-blue-300 text-white hover:shadow-md transition duration-150 ease-in-out hover:scale-110"
       type="text"
       name="fname"
       value={props.parameter.value}
-      onFocusOut={(e) =>
-        sendParameter(
-          props.parameter.moduleid,
-          props.parameter.name,
-          (e.target as HTMLInputElement).value,
-          props.parameter.parentGroupName,
-          props.parameter.groupCollectionNumber,
-          props.updatePage
-        )
-      }
+      onFocusOut={(e) => {
+        send((e.target as HTMLInputElement).value);
+      }}
       onKeyDown={(e) => {
         if (e.key === 'Enter')
-          sendParameter(
-            props.parameter.moduleid,
-            props.parameter.name,
-            (e.target as HTMLInputElement).value,
-            props.parameter.parentGroupName,
-            props.parameter.groupCollectionNumber,
-            props.updatePage
-          );
+          send((e.target as HTMLInputElement).value);
       }}
       style="text-align:center"
     />
