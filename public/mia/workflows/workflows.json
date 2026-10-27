@@ -18,6 +18,26 @@
       "path": "mia/workflows/Aligning_images.mia",
       "thumbnail": "mia/thumbnails/Aligning_images.png",
       "totalStars": 3
+    },
+    {
+      "background": {
+        "colour": "#D1FB88",
+        "iconPaths": [
+          "images/background/square_sm.png",
+          "images/background/square_md.png",
+          "images/background/square_lg.png"
+        ]
+      },
+      "banner": {
+        "text": "Beta",
+        "colour": "bg-amber-500"
+      },
+      "displayname": "Resolution and detail",
+      "fullname": "Resolution_and_detail",
+      "memory": 7940514,
+      "path": "mia/workflows/Resolution_and_detail.mia",
+      "thumbnail": "mia/thumbnails/Resolution_and_detail.png",
+      "totalStars": 4
     }
   ]
 }
