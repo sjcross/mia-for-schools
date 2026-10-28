@@ -165,20 +165,25 @@ async function updatePage(result: any) {
   setHasPrevious(await result.hasPreviousGroup());
   setHasNext(await result.hasNextGroup());
 
-  const wfName = "Star_"+workflowName.toString();
-  const currStarCount = await result.getStarCount();
-  if (sessionStorage.getItem(wfName) == null)
-    sessionStorage.setItem(wfName, "0");
+  var prevTotalStarCount = 0;
+  for (var i = 0; i < sessionStorage.length; i++)
+    prevTotalStarCount = prevTotalStarCount + Number(sessionStorage.getItem(sessionStorage.key(i)));
 
-  const storedStarCount = Number(sessionStorage.getItem(wfName) ?? 0);
-  if (currStarCount > storedStarCount) {
-    setStarCount(currStarCount);
-    sessionStorage.setItem(wfName, currStarCount);
-  }
+  const wfName = "Star_"+workflowName.toString();
+  const currWorkflowStarCount = await result.getWorkflowStarCount();
+  sessionStorage.setItem(wfName, currWorkflowStarCount);
+
+  var newTotalStarCount = 0;
+  for (var i = 0; i < sessionStorage.length; i++)
+    newTotalStarCount = newTotalStarCount + Number(sessionStorage.getItem(sessionStorage.key(i)));
+
+  if (newTotalStarCount > prevTotalStarCount)
+    setStarCount(newTotalStarCount);
 
   setImage(result);
   setGraph(result.graph);
   setShowNav(true);
+
 }
 
 export default function Workflow() {

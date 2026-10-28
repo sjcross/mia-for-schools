@@ -11,7 +11,6 @@
           "images/background/square_lg.png"
         ]
       },
-      "banner": { "text": "Beta", "colour": "bg-amber-500" },
       "displayname": "Aligning images",
       "fullname": "Aligning_images",
       "memory": 9371027,
@@ -28,16 +27,12 @@
           "images/background/square_lg.png"
         ]
       },
-      "banner": {
-        "text": "Beta",
-        "colour": "bg-amber-500"
-      },
       "displayname": "Resolution and detail",
       "fullname": "Resolution_and_detail",
       "memory": 7940514,
       "path": "mia/workflows/Resolution_and_detail.mia",
       "thumbnail": "mia/thumbnails/Resolution_and_detail.png",
-      "totalStars": 4
+      "totalStars": 3
     }
   ]
 }

@@ -10,7 +10,6 @@
 -keep class io.github.mianalysis.mia.** { *; }
 -keep class io.github.mianalysis.miaserver.** { *; }
 -keep @org.scijava.plugin.Plugin class * { *; }
--keepattributes Signature,*Annotation*
 -keep class ij.** { *; }
 -keep class net.imagej.legacy.** { *; }
 -keep class net.imagej.patcher.** { *; }

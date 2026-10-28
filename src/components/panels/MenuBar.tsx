@@ -1,6 +1,5 @@
-import { Accessor, createSignal, Setter, Show } from 'solid-js';
+import { Accessor, Setter } from 'solid-js';
 import Panel from './Panel';
-import Help from './Help';
 import StarCounter from './StarCounter';
 import HelpButton from '../controls/HelpButton';
 

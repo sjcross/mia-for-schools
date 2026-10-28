@@ -17,11 +17,8 @@ async function loadWorkflows() {
 export default function WorkflowSelector() {
   loadWorkflows();
   var totalStarCount = 0;
-  for (var i=0;i<sessionStorage.length;i++)
-     {
-      console.log(Number(sessionStorage.getItem(sessionStorage.key(i))));
-      totalStarCount = totalStarCount + Number(sessionStorage.getItem(sessionStorage.key(i)));
-     }
+  for (var i = 0; i < sessionStorage.length; i++)
+    totalStarCount = totalStarCount + Number(sessionStorage.getItem(sessionStorage.key(i)));
 
   setStarCount(totalStarCount);
 
