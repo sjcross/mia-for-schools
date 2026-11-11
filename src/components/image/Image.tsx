@@ -49,6 +49,7 @@ export default function Image(props: Props) {
           setShowProbeControl(imageJSON.showprobecontrol);
           setShowSelectControl(imageJSON.showselectcontrol);
           setShowZoomControl(imageJSON.showzoomcontrol);
+          setControlStateByName(imageJSON.defaultcontrol);
           setAboutText(imageJSON.aboutText);
         })();
 
@@ -90,8 +91,6 @@ export default function Image(props: Props) {
         panzoom.pan(currPan.x, currPan.y);
         image_region?.parentElement?.addEventListener('click', updatePan);
         setZoomControl(panzoom);
-
-        setControlStateByName(props.image.defaultcontrol);
 
         if (props.overlaysJSON != undefined) {
           if (overlay() == undefined) setOverlay(new Overlay(panelWidth));
