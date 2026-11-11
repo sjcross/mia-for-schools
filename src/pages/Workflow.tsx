@@ -32,23 +32,6 @@ window.setLoadedBytes = setLoadedBytes;
 var startingBytes = 0;
 var finalBytes = 0;
 
-// function getClickListenerParameter(modules: [ModuleJSON]) {
-//   if (modules == undefined) return undefined;
-
-//   var clickParameter = undefined;
-//   modules.forEach((module) => {
-//     module.parameters.forEach((parameter) => {
-//       if (parameter.type === 'ClickListenerP') {
-//         clickParameter = parameter;
-
-//         return clickParameter;
-//       }
-//     });
-//   });
-
-//   return clickParameter;
-// }
-
 // const awaitConnect = async (awaitConnectConfig) => {
 //   const { retries = 3, curr = 0, timeinterval = 100 } = {};
 
@@ -153,8 +136,6 @@ async function initialiseWorkflow(workflowName: string | string[]) {
 }
 
 async function updatePage(result: any) {
-  // var modules = await JSON.parse(await result.modules.toString());
-  // var clickParameter = getClickListenerParameter(modules);
   var clickParameterJava = await result.getClickListener();
   if (clickParameterJava !== null) {
     var clickParameter = await JSON.parse(await clickParameterJava.toString());
