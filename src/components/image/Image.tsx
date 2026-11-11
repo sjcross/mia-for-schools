@@ -34,7 +34,7 @@ export default function Image(props: Props) {
   const [showProbeControl, setShowProbeControl] = createSignal(false);
   const [showSelectControl, setShowSelectControl] = createSignal(false);
   const [showZoomControl, setShowZoomControl] = createSignal(false);
-  const [controlState, setControlState] = createSignal<ControlState>(ControlState.PROBE);
+  const [controlState, setControlState] = createSignal<ControlState>(ControlState.MOVE);
   const [zoomControl, setZoomControl] = createSignal<PanzoomObject>();
   const [probeVisible, setProbeVisible] = createSignal(false);
   const [overlay, setOverlay] = createSignal<Overlay>();
@@ -174,6 +174,7 @@ export default function Image(props: Props) {
 
   function updateProbe(event: PointerEvent) {
     if (!probeVisible()) return;
+
     var probe = document.getElementById('probe');
     if (event.pointerType === 'touch') {
       probe.style.left = (event.clientX - probe.clientWidth / 2).toString() + 'px';
@@ -214,7 +215,7 @@ export default function Image(props: Props) {
 
   return (
     <div id="image_panel" class="flex flex-col ">
-      <Show when={probeVisible()}>
+      <Show when={probeVisible() && probeEnabled}>
         <div
           id="probe"
           class="absolute flex items-center rounded-2xl overflow-visible shadow-lg bg-white p-2 z-20"

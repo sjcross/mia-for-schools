@@ -20,18 +20,19 @@
     },
     {
       "background": {
-        "colour": "#D1FB88",
+        "colour": "#F08F90",
         "iconPaths": [
-          "images/background/square_sm.png",
-          "images/background/square_md.png",
-          "images/background/square_lg.png"
+          "images/background/diatom1.png",
+          "images/background/diatom2.png",
+          "images/background/diatom3.png",
+          "images/background/diatom4.png"
         ]
       },
-      "displayname": "Resolution and detail",
-      "fullname": "Resolution_and_detail",
-      "memory": 7940514,
-      "path": "mia/workflows/Resolution_and_detail.mia",
-      "thumbnail": "mia/thumbnails/Resolution_and_detail.png",
+      "displayname": "Sort the shapes",
+      "fullname": "Sort_the_shapes",
+      "memory": 3344866,
+      "path": "mia/workflows/Sort_the_shapes.mia",
+      "thumbnail": "mia/thumbnails/Sort_the_shapes.png",
       "totalStars": 3
     }
   ]

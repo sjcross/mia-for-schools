@@ -32,22 +32,22 @@ window.setLoadedBytes = setLoadedBytes;
 var startingBytes = 0;
 var finalBytes = 0;
 
-function getClickListenerParameter(modules: [ModuleJSON]) {
-  if (modules == undefined) return undefined;
+// function getClickListenerParameter(modules: [ModuleJSON]) {
+//   if (modules == undefined) return undefined;
 
-  var clickParameter = undefined;
-  modules.forEach((module) => {
-    module.parameters.forEach((parameter) => {
-      if (parameter.type === 'ClickListenerP') {
-        clickParameter = parameter;
+//   var clickParameter = undefined;
+//   modules.forEach((module) => {
+//     module.parameters.forEach((parameter) => {
+//       if (parameter.type === 'ClickListenerP') {
+//         clickParameter = parameter;
 
-        return clickParameter;
-      }
-    });
-  });
+//         return clickParameter;
+//       }
+//     });
+//   });
 
-  return clickParameter;
-}
+//   return clickParameter;
+// }
 
 // const awaitConnect = async (awaitConnectConfig) => {
 //   const { retries = 3, curr = 0, timeinterval = 100 } = {};
@@ -153,15 +153,24 @@ async function initialiseWorkflow(workflowName: string | string[]) {
 }
 
 async function updatePage(result: any) {
-  // var clickParameter = getClickListenerParameter(result.modules);
+  // var modules = await JSON.parse(await result.modules.toString());
+  // var clickParameter = getClickListenerParameter(modules);
+  var clickParameterJava = await result.getClickListener();
+  if (clickParameterJava !== null) {
+    var clickParameter = await JSON.parse(await clickParameterJava.toString());
+    if (clickListener() == undefined)
+      setClickListener(new ClickListener(clickParameter, updatePage));
+  }
 
-  // if (clickParameter !== undefined)
-  //   if (clickListener() == undefined)
-  //     setClickListener(new ClickListener(clickParameter, updatePage));
+  var overlaysJava = await result.getOverlays()
+  if (overlaysJava != undefined) {
+    var overlays = await overlaysJava.toString();
+    setOverlays(await JSON.parse(overlays));
+  }
 
-  setOverlays(result.overlays);
   var message = await (await result.getMessage()).toString();
   setMessage(await JSON.parse(message));
+
   setHasPrevious(await result.hasPreviousGroup());
   setHasNext(await result.hasNextGroup());
 
@@ -169,7 +178,7 @@ async function updatePage(result: any) {
   for (var i = 0; i < sessionStorage.length; i++)
     prevTotalStarCount = prevTotalStarCount + Number(sessionStorage.getItem(sessionStorage.key(i)));
 
-  const wfName = "Star_"+workflowName.toString();
+  const wfName = "Star_" + workflowName.toString();
   const currWorkflowStarCount = await result.getWorkflowStarCount();
   sessionStorage.setItem(wfName, currWorkflowStarCount);
 
