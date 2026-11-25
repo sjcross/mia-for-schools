@@ -23,7 +23,7 @@ export default function TextEntry(props: Props) {
 
   return (
     <input
-      class="h-10 m-1 text-2xl w-auto rounded-xl bg-blue-300 text-white hover:shadow-md transition duration-150 ease-in-out hover:scale-110"
+      class="h-10 m-1 text-2xl text-center w-32 rounded-xl bg-green-300 text-white hover:shadow-md transition duration-150 ease-in-out hover:bg-orange-400"
       type="text"
       name="fname"
       value={props.parameter.value}
@@ -34,7 +34,6 @@ export default function TextEntry(props: Props) {
         if (e.key === 'Enter')
           send((e.target as HTMLInputElement).value);
       }}
-      style="text-align:center"
     />
   );
 }

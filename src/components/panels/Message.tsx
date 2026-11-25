@@ -14,7 +14,7 @@ interface Props {
 export default function Message(props: Props) {
   function createControl(parameter: ParameterJSON) {
     return [
-      <div class="inline items-center">
+      <span class="inline items-center">
         <Switch>
           <Match when={parameter.type === 'BooleanP'}>
             <ParameterToggle parameter={parameter} updatePage={props.updatePage} />
@@ -44,7 +44,7 @@ export default function Message(props: Props) {
             {createControls(parameter.collections)}
           </Match>
         </Switch>
-      </div>,
+      </span>,
     ];
   }
 
@@ -75,10 +75,10 @@ export default function Message(props: Props) {
                 {createControl(content.data as ParameterJSON)}
               </Match>
               <Match when={content.type === 'text'}>
-                <div
+                <span
                   class="inline text-gray-600 text-2xl"
                   innerHTML={content.data as string}
-                ></div>
+                ></span>
               </Match>
             </Switch>
           )}
